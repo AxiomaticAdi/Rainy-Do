@@ -4,8 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import Task from "./Task";
 
-// type tasks = [{ id: number; text: string }];
-
 export default function TaskList() {
     const [tasks, setTasks] = useState([{ id: 1, text: "", completed: false }]);
 
@@ -16,7 +14,7 @@ export default function TaskList() {
         ]);
     };
 
-    const editTaskDescription = () => {
+    const toggleTaskCompletion = (taskId: number) => {
         setTasks((prevTasks) =>
             prevTasks.map((task) =>
                 task.id === taskId
@@ -26,12 +24,10 @@ export default function TaskList() {
         );
     };
 
-    const toggleTaskCompletion = (taskId: number) => {
+    const updateTaskText = (taskId: number, newText: string) => {
         setTasks((prevTasks) =>
             prevTasks.map((task) =>
-                task.id === taskId
-                    ? { ...task, completed: !task.completed }
-                    : task,
+                task.id === taskId ? { ...task, text: newText } : task,
             ),
         );
     };
@@ -53,13 +49,21 @@ export default function TaskList() {
                         />
                     </button>
                 </thead>
-                <div className="divider bg-base-100 my-0 py-0"></div>
+                <hr
+                    style={{
+                        height: "2px",
+                        borderWidth: 0,
+                        color: "gray",
+                        backgroundColor: "gray",
+                    }}
+                />
                 <tbody>
                     {tasks.map((task) => (
                         <Task
                             key={task.id}
                             task={task}
                             onToggleCompletion={toggleTaskCompletion}
+                            onUpdateText={updateTaskText}
                         />
                     ))}
                 </tbody>

@@ -7,9 +7,14 @@ interface TaskProps {
         completed: boolean;
     };
     onToggleCompletion: (taskId: number) => void;
+    onUpdateText: (taskId: number, newText: string) => void;
 }
 
-export default function Task({ task, onToggleCompletion }: TaskProps) {
+export default function Task({
+    task,
+    onToggleCompletion,
+    onUpdateText,
+}: TaskProps) {
     return (
         <tr>
             <td className="ml-3 flex items-center gap-4">
@@ -24,6 +29,7 @@ export default function Task({ task, onToggleCompletion }: TaskProps) {
                     placeholder="New task..."
                     value={task.text}
                     className="input input-ghost"
+                    onChange={(e) => onUpdateText(task.id, e.target.value)}
                 ></input>
             </td>
         </tr>
