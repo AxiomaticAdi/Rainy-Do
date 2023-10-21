@@ -1,14 +1,23 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import PrimaryLauncherButton from "./PrimaryLauncherButton";
-import { useState } from "react";
 
-const rainsounds = new Audio("/RainSounds.mp3");
+let rainsounds: HTMLAudioElement;
 
-export default function AudioPlayer() {
-    const [isPlaying, setIsPlaying] = useState(false);
+const AudioPlayer: React.FC = () => {
+    const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
-    const toggleAudio = () => {
-        isPlaying ? rainsounds.pause() : rainsounds.play();
-        setIsPlaying(!isPlaying);
+    useEffect(() => {
+        // This will ensure the Audio object is created on the client side
+        rainsounds = new Audio("/RainSounds.mp3");
+    }, []);
+
+    const toggleAudio = (): void => {
+        if (rainsounds) {
+            isPlaying ? rainsounds.pause() : rainsounds.play();
+            setIsPlaying(!isPlaying);
+        }
     };
 
     return (
@@ -19,4 +28,6 @@ export default function AudioPlayer() {
             />
         </div>
     );
-}
+};
+
+export default AudioPlayer;
