@@ -1,8 +1,12 @@
 import PrimaryLauncherButton from "./PrimaryLauncherButton";
 
-export default function TaskLauncher() {
+interface TaskLauncherProps {
+    onToggle: () => void;
+}
+
+export default function TaskLauncher({ onToggle }: TaskLauncherProps) {
     return (
-        <div>
+        <div onClick={onToggle}>
             <PrimaryLauncherButton
                 iconSrc={"/clipboard.svg"}
                 iconAlt={"Launch to-do tracker"}
