@@ -16,22 +16,21 @@ export default function Task({
     onUpdateText,
 }: TaskProps) {
     return (
-        <tr>
-            <td className="ml-3 flex items-center gap-4">
-                <input
-                    type="checkbox"
-                    className="checkbox"
-                    checked={task.completed}
-                    onChange={() => onToggleCompletion(task.id)}
-                />
-                <input
-                    type="text"
-                    placeholder="New task..."
-                    value={task.text}
-                    className="input input-ghost"
-                    onChange={(e) => onUpdateText(task.id, e.target.value)}
-                ></input>
-            </td>
-        </tr>
+        <li className="ml-3 flex items-center gap-4">
+            <input
+                type="checkbox"
+                className="checkbox"
+                checked={task.completed}
+                onChange={() => onToggleCompletion(task.id)}
+            />
+            <input
+                type="text"
+                placeholder="New task..."
+                value={task.text}
+                className="input input-ghost"
+                onChange={(e) => onUpdateText(task.id, e.target.value)}
+                style={{ backgroundColor: "transparent" }}
+            ></input>
+        </li>
     );
 }

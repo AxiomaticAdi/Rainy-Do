@@ -1,4 +1,3 @@
-import Image from "next/image";
 import PrimaryLauncherButton from "./PrimaryLauncherButton";
 
 export default function TaskLauncher() {
