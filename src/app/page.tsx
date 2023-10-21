@@ -22,7 +22,7 @@ export default function Home() {
                     muted
                     poster="https://assets.codepen.io/6093409/river.jpg"
                 >
-                    <source src="rain_video.mp4" type="video/mp4" />
+                    <source src="rain_video2.mp4" type="video/mp4" />
                 </video>
             ) : (
                 <div
