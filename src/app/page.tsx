@@ -6,25 +6,52 @@ import AudioPlayer from "./components/AudioPlayer";
 import PomodoroLauncher from "./components/PomodoroLauncher";
 import TaskLauncher from "./components/TaskLauncher";
 import TaskList from "./components/TaskList";
+import BackgroundSwap from "./components/BackgroundSwap";
 
 export default function Home() {
     const [isTasksVisible, setIsTasksVisible] = useState(false);
+    const [showVideo, setShowVideo] = useState(false);
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-center">
-            <div className="flex items-center justify-center">
-                <TaskLauncher
-                    onToggle={() => setIsTasksVisible(!isTasksVisible)}
-                />
-                <AudioPlayer />
-                <PomodoroLauncher />
-            </div>
-            <div
-                className="flex flex-col items-center justify-center"
-                style={{ visibility: isTasksVisible ? "visible" : "hidden" }}
-            >
-                <TaskList />
-            </div>
-        </main>
+        <>
+            {showVideo ? (
+                <video
+                    id="background-video"
+                    autoPlay
+                    loop
+                    muted
+                    poster="https://assets.codepen.io/6093409/river.jpg"
+                >
+                    <source src="rain_video.mp4" type="video/mp4" />
+                </video>
+            ) : (
+                <div
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{
+                        backgroundImage:
+                            "url(https://images.pexels.com/photos/1906932/pexels-photo-1906932.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)",
+                        zIndex: -1,
+                    }}
+                ></div>
+            )}
+            <main className="flex min-h-screen flex-col items-center justify-center">
+                <div className="flex items-center justify-center">
+                    <TaskLauncher
+                        onToggle={() => setIsTasksVisible(!isTasksVisible)}
+                    />
+                    <AudioPlayer />
+                    <PomodoroLauncher />
+                    <BackgroundSwap onToggle={() => setShowVideo(!showVideo)} />
+                </div>
+                <div
+                    className="flex flex-col items-center justify-center"
+                    style={{
+                        visibility: isTasksVisible ? "visible" : "hidden",
+                    }}
+                >
+                    <TaskList />
+                </div>
+            </main>
+        </>
     );
 }

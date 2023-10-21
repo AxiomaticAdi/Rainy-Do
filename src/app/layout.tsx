@@ -16,15 +16,6 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <video
-                id="background-video"
-                autoPlay
-                loop
-                muted
-                poster="https://assets.codepen.io/6093409/river.jpg"
-            >
-                <source src="rain_video.mp4" type="video/mp4" />
-            </video>
             <body className={inter.className}>{children}</body>
         </html>
     );
