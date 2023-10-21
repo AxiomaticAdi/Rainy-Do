@@ -13,3 +13,8 @@ main {
     background-position: center center;
     background-attachment: fixed;
 }
+
+/* * {
+    background-color: rgba(0, 0, 0, 0.1);
+    outline: red solid 2px;
+} */
