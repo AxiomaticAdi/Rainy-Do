@@ -20,7 +20,7 @@ export default function Home() {
                     autoPlay
                     loop
                     muted
-                    poster="https://assets.codepen.io/6093409/river.jpg"
+                    poster="https://images.pexels.com/photos/1906932/pexels-photo-1906932.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 >
                     <source src="rain_video2.mp4" type="video/mp4" />
                 </video>
