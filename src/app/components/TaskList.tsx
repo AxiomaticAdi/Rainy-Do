@@ -40,7 +40,7 @@ export default function TaskList() {
 
     return (
         <div
-            className="flex flex-col gap-4 rounded-2xl bg-primary bg-opacity-0 hover:bg-opacity-80 hover:text-base-content"
+            className="flex min-w-[300px] flex-col gap-4 rounded-2xl bg-primary bg-opacity-0 hover:bg-opacity-80 hover:text-base-content"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
