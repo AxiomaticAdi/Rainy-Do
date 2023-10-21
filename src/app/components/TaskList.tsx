@@ -6,6 +6,7 @@ import Task from "./Task";
 
 export default function TaskList() {
     const [tasks, setTasks] = useState([{ id: 1, text: "", completed: false }]);
+    const [isHovered, setIsHovered] = useState(false);
 
     const addTask = () => {
         setTasks((prevTasks) => [
@@ -38,24 +39,17 @@ export default function TaskList() {
     };
 
     return (
-        <div className="flex flex-col gap-4 rounded-2xl bg-primary bg-opacity-0 hover:bg-opacity-80 hover:text-base-content">
+        <div
+            className="flex flex-col gap-4 rounded-2xl bg-primary bg-opacity-0 hover:bg-opacity-80 hover:text-base-content"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
             <div className="flex items-center justify-center gap-4 pt-2 text-3xl">
                 <span>To Do</span>
                 <button className="btn btn-circle btn-ghost" onClick={addTask}>
                     <Image
                         src={"/add-circle.svg"}
                         alt={"add task"}
-                        width={25}
-                        height={25}
-                    />
-                </button>
-                <button
-                    className="btn btn-circle btn-ghost"
-                    onClick={clearCompletedTasks}
-                >
-                    <Image
-                        src={"/trash.svg"}
-                        alt={"clear completed"}
                         width={25}
                         height={25}
                     />
@@ -71,6 +65,22 @@ export default function TaskList() {
                     />
                 ))}
             </ul>
+            <div className="flex items-center justify-center pb-4">
+                {isHovered && (
+                    <button
+                        className="btn btn-ghost"
+                        onClick={clearCompletedTasks}
+                    >
+                        <span>Clear completed</span>
+                        <Image
+                            src={"/trash.svg"}
+                            alt={"clear completed"}
+                            width={25}
+                            height={25}
+                        />
+                    </button>
+                )}
+            </div>
         </div>
     );
 }
