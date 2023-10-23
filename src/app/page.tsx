@@ -3,10 +3,10 @@
 import { useState } from "react";
 
 import AudioPlayer from "./components/AudioPlayer";
-import PomodoroLauncher from "./components/PomodoroLauncher";
 import TaskLauncher from "./components/TaskLauncher";
 import TaskList from "./components/TaskList";
 import BackgroundSwap from "./components/BackgroundSwap";
+import InfoButton from "./components/InfoButton";
 
 export default function Home() {
     const [isTasksVisible, setIsTasksVisible] = useState(false);
@@ -22,7 +22,7 @@ export default function Home() {
                     muted
                     poster="https://images.pexels.com/photos/1906932/pexels-photo-1906932.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 >
-                    <source src="rain_video2.mp4" type="video/mp4" />
+                    <source src="rain_video.mp4" type="video/mp4" />
                 </video>
             ) : (
                 <div
@@ -40,7 +40,6 @@ export default function Home() {
                         onToggle={() => setIsTasksVisible(!isTasksVisible)}
                     />
                     <AudioPlayer />
-                    <PomodoroLauncher />
                     <BackgroundSwap onToggle={() => setShowVideo(!showVideo)} />
                 </div>
                 <div
@@ -51,6 +50,9 @@ export default function Home() {
                 >
                     <TaskList />
                 </div>
+                <footer className="absolute bottom-4">
+                    <InfoButton />
+                </footer>
             </main>
         </>
     );
