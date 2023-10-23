@@ -63,7 +63,18 @@ export default function InfoButton() {
                     </div>
 
                     <div>
-                        <h4 className="font-bold underline">Credits</h4>
+                        <h4 className="font-bold underline">Links:</h4>
+                        <div className="flex flex-row flex-wrap gap-2">
+                            <a href="https://github.com/AxiomaticAdi/rainy-do">
+                                Github
+                            </a>
+                            <a href="https://www.pexels.com/photo/water-droplets-on-glass-window-1906932/">
+                                Image credit
+                            </a>
+                            <a href="https://www.pexels.com/video/a-picturesque-view-of-a-landscape-while-raining-5174040/">
+                                Video credit
+                            </a>
+                        </div>
                     </div>
 
                     <div className="font-bold">
