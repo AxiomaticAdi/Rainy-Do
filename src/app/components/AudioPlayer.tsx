@@ -15,6 +15,7 @@ const AudioPlayer: React.FC = () => {
         // This will ensure the Audio object is created on the client side
         rainsounds = new Audio("/RainSounds.mp3");
         rainsounds.volume = 0.5;
+        rainsounds.loop = true;
     }, []);
 
     const toggleAudio = (): void => {
